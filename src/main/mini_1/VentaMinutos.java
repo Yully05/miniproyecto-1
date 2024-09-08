@@ -1,3 +1,5 @@
+package src.main.mini_1;
+
 public class VentaMinutos extends Servicio {
 
     private int minutos;

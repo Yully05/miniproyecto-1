@@ -1,3 +1,5 @@
+package src.main.mini_1;
+
 public class Fotocopiadora extends Servicio {
 
     private int cantidadCopias;
@@ -30,7 +32,6 @@ public class Fotocopiadora extends Servicio {
     public double calcularValorFotocopia(){
         if (color){
             return cantidadCopias * costoColor;
-            
         }else{
             return cantidadCopias * costoBN;
         }

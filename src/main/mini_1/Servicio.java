@@ -1,10 +1,11 @@
+package src.main.mini_1;
+
 public class Servicio {
 
     private double valorPagado;
 
     public Servicio(double valor){
         this.valorPagado = valor;
-
     }
 
     public double getCosto(){
@@ -13,7 +14,6 @@ public class Servicio {
 
     public void setCosto(double valor){
         valorPagado = valor;
-
     }
     
 }

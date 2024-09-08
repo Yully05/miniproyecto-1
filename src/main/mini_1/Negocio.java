@@ -1,3 +1,4 @@
+package src.main.mini_1;
 
 import java.util.ArrayList;
 
