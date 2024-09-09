@@ -1,17 +1,21 @@
 package src.main.mini_1;
 
-import java.util.ArrayList;
+import src.main.mini_1.Registros.RegistroFotocopias;
 
 public class Negocio {
 
-    private ArrayList<Servicio> servicios;
     private double costoEnergia;
     private double sueldoTrabajador;
+    private String nombreNegocio;
+    private final RegistroFotocopias regFotocopias;
+    //private final RegistroMinutos regMinutos;
 
-    public Negocio(double energia, double sueldo) {
-        this.servicios = new ArrayList<>();
+    public Negocio(double energia, double sueldo, String nombreNegocio) {
+        regFotocopias = new RegistroFotocopias();
+        //regMinutos = new registroMinutos();
         this.costoEnergia = energia;
         this.sueldoTrabajador = sueldo;
+        this.nombreNegocio = nombreNegocio;
     }
 
     public double getCostoEnergia() {
@@ -30,9 +34,22 @@ public class Negocio {
         this.sueldoTrabajador = sueldoTrabajador;
     }
 
-    public void registrarServicio(Servicio servicio) {
-        servicios.add(servicio);
+    public String getNombreNegocio() {
+        return nombreNegocio;
     }
+
+    public void setNombreNegocio(String nombreNegocio) {
+        this.nombreNegocio = nombreNegocio;
+    }
+
+    public RegistroFotocopias getRegFotocopias() {
+        return regFotocopias;
+    }
+    /*
+    public RegistroMinutos getRegMinutos(){
+        return regMinutos;
+    }
+     */
 
     /*public double calcularDineroRecolectado() {
         

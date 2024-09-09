@@ -2,23 +2,13 @@ package src.main.mini_1;
 
 public class Fotocopiadora extends Servicio {
 
-    private int cantidadCopias;
-    private boolean color = false;
-    private static double costoColor = 500; //costo fotocopia a color
-    private static double costoBN = 200; //costo fotocopia B/N
+    private boolean color;
+    private final static double COSTO_COLOR = 500; //costo fotocopia a color
+    private static double COSTO_BN = 200; //costo fotocopia B/N
 
-    public Fotocopiadora(int copias, boolean color, double valor){
-        super(valor);
-        this.cantidadCopias = copias;
+    public Fotocopiadora(int cantidadCopias, boolean color){
+        super(cantidadCopias);
         this.color = color;
-    }
-
-    public int getCantidadCopias() {
-        return cantidadCopias;
-    }
-
-    public void setCantidadCopias(int copias){
-        cantidadCopias = copias;
     }
 
     public boolean getColor() {
@@ -31,10 +21,22 @@ public class Fotocopiadora extends Servicio {
 
     public double calcularValorFotocopia(){
         if (color){
-            return cantidadCopias * costoColor;
+            return super.getCantidad() * COSTO_COLOR;
         }else{
-            return cantidadCopias * costoBN;
+            return super.getCantidad() * COSTO_BN;
         }
     }
-    
+
+    @Override
+    public void registrarServicio(Negocio negocio) {
+        negocio.getRegFotocopias().ejecutarRegistroFotocopias(this);
+        System.out.println("--------------");
+        System.out.println(negocio.getRegFotocopias().getRegistroFotocopias().toString());;
+    }
+
+    @Override
+    public String toString() {
+        String tipo= (color) ? "Color":"BN";
+        return String.format("%s --- %d --- %.2f", tipo, super.getCantidad(), calcularValorFotocopia());
+    }
 }
