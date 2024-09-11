@@ -38,6 +38,7 @@ public class VentaMinutos extends Servicio {
 
     @Override
     public void registrarServicio(Negocio negocio) {
+            negocio.regServicio(this);
 
     }
 }

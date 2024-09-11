@@ -26,7 +26,7 @@ public class Main {
                     menuFotocopiadora();
                     break;
                 case 2:
-                    //servicio minutos
+                    regVentaMinutos();
                     break;
                 case 3:
                     menuAdminitracion();
@@ -80,6 +80,36 @@ public class Main {
                     System.out.println("Opcion incorrecta.");
             }
         } while (!salir);
+    }
+
+    private static void regVentaMinutos(){
+        System.out.println("Ingrese el Operador (Claro, Movistar, Tigo): ");
+        String operador = inputScanner.next();
+        operador = operador.toLowerCase();
+        try{
+            switch (operador){
+                case "claro":
+                    builderVentaMinutos(operador);
+                    break;
+                case "movistar":
+                    builderVentaMinutos(operador);
+                    break;
+                case "tigo":
+                    builderVentaMinutos(operador);
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta.");
+            }
+        }catch (InputMismatchException e){
+            System.err.println("Ingrese Un Numero Valido.");
+        }
+    }
+
+    public static void builderVentaMinutos(String operador){
+        System.out.println("Ingrese la cantidad de minutos vendidos: ");
+        int cantMinutos = inputScanner.nextInt();
+        VentaMinutos newVenta = new VentaMinutos(cantMinutos, operador);
+        newVenta.registrarServicio(negocio);
     }
 
     private static void menuAdminitracion(){

@@ -8,7 +8,7 @@ public class Negocio {
     private double sueldoTrabajador;
     private String nombreNegocio;
     private final RegistroFotocopias regFotocopias;
-    //private final RegistroMinutos regMinutos;
+    private final RegistroMinutos regMinutos;
 
     public Negocio(double energia, double sueldo, String nombreNegocio) {
         regFotocopias = new RegistroFotocopias();
@@ -47,7 +47,7 @@ public class Negocio {
     }
 
     public void regServicio(VentaMinutos minutos) {
-        //Registro de minutos
+        this.regMinutos.ejecutarRegistroMinutos(minutos);
     }
 
     public void imprimirRecibosFotocopias(){
@@ -56,11 +56,10 @@ public class Negocio {
         System.out.println("--------------");
     }
 
-    /*
+
     public RegistroMinutos getRegMinutos(){
         return regMinutos;
     }
-     */
 
     public double calcularIngresos() {
         double ingresos = 0;
@@ -69,9 +68,9 @@ public class Negocio {
             ingresos += fotocopiadora.calcularIngresoFotocopias();
         }
 
-        /*for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
+        for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
             ingresos += ventaMinutos.calcularValorMinuto();
-        }*/
+        }
 
 
         System.out.printf("Los ingresos totales del día fueron: %.2f%n", ingresos);
@@ -85,9 +84,9 @@ public class Negocio {
             egresos += fotocopiadora.calcularEgresoFotocopias();
         }
 
-        /*for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
+        for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
             egresos += ventaMinutos.calcularEgresoMinutos();
-        }*/
+        }
 
         System.out.printf("Los costos operativos totales fueron: %.2f%n", egresos);
         return egresos;
