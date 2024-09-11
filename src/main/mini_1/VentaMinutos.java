@@ -38,6 +38,11 @@ public class VentaMinutos extends Servicio {
 
     @Override
     public void registrarServicio(Negocio negocio) {
+        //negocio.getRegMinutos().ejecutarRegistroFotocopias(this);
+        System.out.println("--------------");
+        //System.out.println(negocio.getRegMinutos());
+        System.out.print("La Llamada a " + operador);// + " cuesta: " + calcularValorMinuto());
+        System.out.println(" por " + getCantidad() + " minutos, cuesta: " + calcularValorMinuto());
 
     }
 }

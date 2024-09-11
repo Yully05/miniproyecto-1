@@ -26,6 +26,7 @@ public class Main {
                     menuFotocopiadora();
                     break;
                 case 2:
+                    regMinutos();
                     //servicio minutos
                     break;
                 case 3:
@@ -46,7 +47,7 @@ public class Main {
         class fotocopiadoraBuilder{
             public static void builder(boolean color){
                 System.out.println("Ingrese la cantidad de fotocopias:");
-                try{
+                try {
                     final int cnt = inputScanner.nextInt();
                     Fotocopiadora nuevaFotocopia = new Fotocopiadora(cnt, color);
                     nuevaFotocopia.registrarServicio(negocio);
@@ -85,6 +86,15 @@ public class Main {
         } while (!salir);
     }
 
+    private static void regMinutos(){
+        System.out.println("Ingrese la cantidad de minutos vendidos: ");
+        int cantMinutos = inputScanner.nextInt();
+        System.out.println("Ingrese que Operador (Claro, Movistar, Tigo: ");
+        String operador = inputScanner.next();
+        operador = operador.toLowerCase();
+        VentaMinutos newVenta = new VentaMinutos(cantMinutos, operador);
+        newVenta.registrarServicio(negocio);
+    }
 
 
     

@@ -1,6 +1,7 @@
 package src.main.mini_1;
 
 import src.main.mini_1.Registros.RegistroFotocopias;
+import src.main.mini_1.VentaMinutos;
 
 public class Negocio {
 
@@ -45,11 +46,11 @@ public class Negocio {
     public RegistroFotocopias getRegFotocopias() {
         return regFotocopias;
     }
-    /*
-    public RegistroMinutos getRegMinutos(){
-        return regMinutos;
-    }
-     */
+
+//    public RegistroMinutos getRegMinutos(){
+//        return regMinutos;
+//    }
+
 
     /*public double calcularDineroRecolectado() {
         
