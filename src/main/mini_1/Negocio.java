@@ -42,26 +42,63 @@ public class Negocio {
         this.nombreNegocio = nombreNegocio;
     }
 
-    public RegistroFotocopias getRegFotocopias() {
-        return regFotocopias;
+    public void regServicio(Fotocopiadora fotocopiadora) {
+       this.regFotocopias.ejecutarRegistroFotocopias(fotocopiadora);
     }
+
+    public void regServicio(VentaMinutos minutos) {
+        //Registro de minutos
+    }
+
+    public void imprimirRecibosFotocopias(){
+        System.out.println("--------------");
+        System.out.println(this.regFotocopias);
+        System.out.println("--------------");
+    }
+
     /*
     public RegistroMinutos getRegMinutos(){
         return regMinutos;
     }
      */
 
-    /*public double calcularDineroRecolectado() {
-        
+    public double calcularIngresos() {
+        double ingresos = 0;
+
+        for(Fotocopiadora fotocopiadora : regFotocopias.getRegistroFotocopias()){
+            ingresos += fotocopiadora.calcularIngresoFotocopias();
+        }
+
+        /*for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
+            ingresos += ventaMinutos.calcularValorMinuto();
+        }*/
+
+
+        System.out.printf("Los ingresos totales del día fueron: %.2f%n", ingresos);
+        return ingresos;
     }
 
-    public double calcularCostosProduccion() {
-        
+    public double calcularEgresos() {
+        double egresos = 0;
+
+        for(Fotocopiadora fotocopiadora : regFotocopias.getRegistroFotocopias()){
+            egresos += fotocopiadora.calcularEgresoFotocopias();
+        }
+
+        /*for(VentaMinutos ventaMinutos : regMinutos.getRegistroMinutos()){
+            egresos += ventaMinutos.calcularEgresoMinutos();
+        }*/
+
+        System.out.printf("Los costos operativos totales fueron: %.2f%n", egresos);
+        return egresos;
     }
 
-    public double calcularGanancia() {
-
+    public void calcularGanancia() {
+        System.out.printf("La ganancia del día fue: %.2f%n",
+                ( calcularIngresos() - calcularEgresos()));
     }
-    */
+
+
+
     
 }
