@@ -14,10 +14,15 @@ public class RegistroMinutos {
 
     @Override
     public String toString() {
-        StringBuilder registroFotoToString = new StringBuilder();
+        StringBuilder registroMinToString = new StringBuilder();
+        registroMinToString.append("Ref .. Operador .. Cantidad .. Valor pagado\n");
         for(VentaMinutos venta : registroMinutos) {
-            registroFotoToString.append(String.format("%s\n", venta.toString()));
+            registroMinToString.append(String.format("%d ... %s\n",
+                    registroMinutos.indexOf(venta),
+                    venta.toString()));
         }
-        return registroFotoToString.toString();
+        return registroMinToString.toString();
     }
+
+
 }

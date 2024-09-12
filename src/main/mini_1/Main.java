@@ -26,13 +26,10 @@ public class Main {
                     menuFotocopiadora();
                     break;
                 case 2:
-                    regMinutos();
-                    //servicio minutos
-
                     regVentaMinutos();
                     break;
                 case 3:
-                    menuAdminitracion();
+                    menuAdministracion();
                     break;
                 case 4:
                     salir = true;
@@ -85,36 +82,21 @@ public class Main {
         } while (!salir);
     }
 
-    private static void regMinutos(){
-        System.out.println("Ingrese la cantidad de minutos vendidos: ");
-        int cantMinutos = inputScanner.nextInt();
-        System.out.println("Ingrese que Operador (Claro, Movistar, Tigo: ");
-        String operador = inputScanner.next();
-        operador = operador.toLowerCase();
-        VentaMinutos newVenta = new VentaMinutos(cantMinutos, operador);
-        newVenta.registrarServicio(negocio);
-    }
 
     private static void regVentaMinutos(){
         System.out.println("Ingrese el Operador (Claro, Movistar, Tigo): ");
-        String operador = inputScanner.next();
-        operador = operador.toLowerCase();
         try{
+            String operador = inputScanner.next();
+            operador = operador.toLowerCase();
             switch (operador){
-                case "claro":
-                    builderVentaMinutos(operador);
-                    break;
-                case "movistar":
-                    builderVentaMinutos(operador);
-                    break;
-                case "tigo":
+                case "claro", "movistar", "tigo":
                     builderVentaMinutos(operador);
                     break;
                 default:
                     System.out.println("Opcion incorrecta.");
             }
         }catch (InputMismatchException e){
-            System.err.println("Ingrese Un Numero Valido.");
+            System.err.println("Error en el tipo de dato ingresado");
         }
     }
 
@@ -125,7 +107,7 @@ public class Main {
         newVenta.registrarServicio(negocio);
     }
 
-    private static void menuAdminitracion(){
+    private static void menuAdministracion(){
         boolean salir = false;
         do {
             System.out.print("""
@@ -136,7 +118,7 @@ public class Main {
                     \t(2) Gastos del día
                     \t(3) Ganancia total obtenida del día
                     \t(4) imprimir recibos fotocopias
-                    \t(5) 
+                    \t(5) imprimir recibos minutos
                     \t(6) Volver al menú principal
                     
                     Seleccione la opción:
@@ -156,7 +138,6 @@ public class Main {
                     break;
                 case 5:
                     negocio.imprimirReciboMinutos();
-                    //opcional
                     break;
                 case 6:
                     salir = true;

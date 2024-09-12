@@ -51,12 +51,6 @@ public class Negocio {
        this.regFotocopias.ejecutarRegistroFotocopias(fotocopiadora);
     }
 
-
-//    public RegistroMinutos getRegMinutos(){
-//        return regMinutos;
-//    }
-
-
     public void regServicio(VentaMinutos minutos) {
         this.regMinutos.ejecutarRegistroMinutos(minutos);
     }
