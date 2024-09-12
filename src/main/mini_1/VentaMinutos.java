@@ -7,6 +7,9 @@ public class VentaMinutos extends Servicio {
     private static final double COSTO_MINUTO_MOVISTAR = 500;
     private static final double COSTO_MINUTO_TIGO = 300;
 
+    private static final double PRECIO_MINUTO_CLARO = 700;
+    private static final double PRECIO_MINUTO_MOVISTAR = 600;
+    private static final double PRECIO_MINUTO_TIGO = 500;
 
 
     public VentaMinutos(int cantidadMinutos, String operador) {
@@ -26,23 +29,38 @@ public class VentaMinutos extends Servicio {
     public double calcularValorMinuto(){
         switch (operador) {
             case "claro":
+                return super.getCantidad() * PRECIO_MINUTO_CLARO;
+            case "movistar":
+                return super.getCantidad() * PRECIO_MINUTO_MOVISTAR;
+            case "tigo":
+                return super.getCantidad() * PRECIO_MINUTO_TIGO;
+            default:
+                throw new AssertionError();
+        }
+    }
+    public double calcularEgresoMinutos(){
+        switch (operador) {
+            case "claro":
                 return super.getCantidad() * COSTO_MINUTO_CLARO;
             case "movistar":
                 return super.getCantidad() * COSTO_MINUTO_MOVISTAR;
             case "tigo":
                 return super.getCantidad() * COSTO_MINUTO_TIGO;
-            default:
-                throw new AssertionError();
         }
+        return 0;
     }
 
     @Override
     public void registrarServicio(Negocio negocio) {
+
         //negocio.getRegMinutos().ejecutarRegistroFotocopias(this);
         System.out.println("--------------");
         //System.out.println(negocio.getRegMinutos());
         System.out.print("La Llamada a " + operador);// + " cuesta: " + calcularValorMinuto());
         System.out.println(" por " + getCantidad() + " minutos, cuesta: " + calcularValorMinuto());
+
+            negocio.regServicio(this);
+
 
     }
 }
