@@ -1,7 +1,11 @@
 package src.main.mini_1;
 
 import src.main.mini_1.Registros.RegistroFotocopias;
+
+import src.main.mini_1.VentaMinutos;
+
 import src.main.mini_1.Registros.RegistroMinutos;
+
 
 public class Negocio {
 
@@ -47,6 +51,12 @@ public class Negocio {
        this.regFotocopias.ejecutarRegistroFotocopias(fotocopiadora);
     }
 
+
+//    public RegistroMinutos getRegMinutos(){
+//        return regMinutos;
+//    }
+
+
     public void regServicio(VentaMinutos minutos) {
         this.regMinutos.ejecutarRegistroMinutos(minutos);
     }
@@ -67,6 +77,7 @@ public class Negocio {
     public RegistroMinutos getRegMinutos(){
         return regMinutos;
     }
+
 
     public double calcularIngresos() {
         double ingresos = 0;
