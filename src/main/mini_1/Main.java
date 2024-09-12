@@ -43,18 +43,6 @@ public class Main {
     private static void menuFotocopiadora(){
         boolean salir = false;
 
-        class fotocopiadoraBuilder{
-            public static void builder(boolean color){
-                System.out.println("Ingrese la cantidad de fotocopias:");
-                try {
-                    final int cnt = inputScanner.nextInt();
-                    Fotocopiadora nuevaFotocopia = new Fotocopiadora(cnt, color);
-                    nuevaFotocopia.registrarServicio(negocio);
-                }catch(InputMismatchException e){
-                    System.err.println("Ingrese un número valido.");
-                }
-            }
-        }
         do {
             System.out.print("""
 
@@ -68,10 +56,10 @@ public class Main {
                     """);
             switch (inputScanner.nextInt()) {
                 case 1:
-                    fotocopiadoraBuilder.builder(false);
+                    builderFoto(false);
                     break;
                 case 2:
-                    fotocopiadoraBuilder.builder(true);
+                    builderFoto(true);
                     break;
                 case 3:
                     salir = true;
@@ -81,7 +69,16 @@ public class Main {
             }
         } while (!salir);
     }
-
+    public static void builderFoto(boolean color){
+        System.out.println("Ingrese la cantidad de fotocopias:");
+        try {
+            final int cnt = inputScanner.nextInt();
+            Fotocopiadora nuevaFotocopia = new Fotocopiadora(cnt, color);
+            nuevaFotocopia.registrarServicio(negocio);
+        }catch(InputMismatchException e){
+            System.err.println("Ingrese un número valido.");
+        }
+    }
 
     private static void regVentaMinutos(){
         System.out.println("Ingrese el Operador (Claro, Movistar, Tigo): ");

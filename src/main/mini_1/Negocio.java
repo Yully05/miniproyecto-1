@@ -2,8 +2,6 @@ package src.main.mini_1;
 
 import src.main.mini_1.Registros.RegistroFotocopias;
 
-import src.main.mini_1.VentaMinutos;
-
 import src.main.mini_1.Registros.RegistroMinutos;
 
 
@@ -52,6 +50,7 @@ public class Negocio {
     }
 
     public void regServicio(VentaMinutos minutos) {
+
         this.regMinutos.ejecutarRegistroMinutos(minutos);
     }
 
