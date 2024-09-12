@@ -2,26 +2,21 @@ package src.main.mini_1;
 
 public class VentaMinutos extends Servicio {
 
-    private int minutos;
     private String operador;
-    private static double costoMinutoClaro = 600;
-    private static double costoMinutoMovistar = 500;
-    private static double costoMinutoTigo = 300;
+    private static final double COSTO_MINUTO_CLARO = 600;
+    private static final double COSTO_MINUTO_MOVISTAR = 500;
+    private static final double COSTO_MINUTO_TIGO = 300;
+
+    private static final double PRECIO_MINUTO_CLARO = 700;
+    private static final double PRECIO_MINUTO_MOVISTAR = 600;
+    private static final double PRECIO_MINUTO_TIGO = 500;
 
 
-    public VentaMinutos(double valor, int tiempo, String operador) {
-        super(valor);
-        minutos = tiempo;
+    public VentaMinutos(int cantidadMinutos, String operador) {
+        super(cantidadMinutos);
         this.operador = operador;
     }
 
-    public int getMinutos(){
-        return minutos;
-    }
-
-    public void setMinutos(int tiempo){
-        minutos = tiempo;
-    }
 
     public String getOperador(){
         return operador;
@@ -34,14 +29,30 @@ public class VentaMinutos extends Servicio {
     public double calcularValorMinuto(){
         switch (operador) {
             case "claro":
-                return minutos * costoMinutoClaro;
+                return super.getCantidad() * PRECIO_MINUTO_CLARO;
             case "movistar":
-                return minutos * costoMinutoMovistar;
+                return super.getCantidad() * PRECIO_MINUTO_MOVISTAR;
             case "tigo":
-                return minutos * costoMinutoTigo;
+                return super.getCantidad() * PRECIO_MINUTO_TIGO;
             default:
                 throw new AssertionError();
         }
     }
-    
+    public double calcularEgresoMinutos(){
+        switch (operador) {
+            case "claro":
+                return super.getCantidad() * COSTO_MINUTO_CLARO;
+            case "movistar":
+                return super.getCantidad() * COSTO_MINUTO_MOVISTAR;
+            case "tigo":
+                return super.getCantidad() * COSTO_MINUTO_TIGO;
+        }
+        return 0;
+    }
+
+    @Override
+    public void registrarServicio(Negocio negocio) {
+            negocio.regServicio(this);
+
+    }
 }

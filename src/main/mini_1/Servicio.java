@@ -1,19 +1,21 @@
 package src.main.mini_1;
 
-public class Servicio {
+public abstract class Servicio {
 
-    private double valorPagado;
+    private int cantidad;
 
-    public Servicio(double valor){
-        this.valorPagado = valor;
+    public Servicio(int cantidad){
+        this.cantidad = cantidad;
     }
 
-    public double getCosto(){
-        return valorPagado;
+    public int getCantidad(){
+        return cantidad;
     }
 
-    public void setCosto(double valor){
-        valorPagado = valor;
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
     }
+
+    public abstract void registrarServicio(Negocio negocio);
     
 }
