@@ -142,6 +142,7 @@ public class Main {
                     negocio.imprimirRecibosFotocopias();
                     break;
                 case 5:
+                    negocio.imprimirReciboMinutos();
                     //opcional
                     break;
                 case 6:

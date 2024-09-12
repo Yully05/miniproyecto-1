@@ -1,6 +1,7 @@
 package src.main.mini_1;
 
 import src.main.mini_1.Registros.RegistroFotocopias;
+import src.main.mini_1.Registros.RegistroMinutos;
 
 public class Negocio {
 
@@ -12,7 +13,7 @@ public class Negocio {
 
     public Negocio(double energia, double sueldo, String nombreNegocio) {
         regFotocopias = new RegistroFotocopias();
-        //regMinutos = new registroMinutos();
+        regMinutos = new RegistroMinutos();
         this.costoEnergia = energia;
         this.sueldoTrabajador = sueldo;
         this.nombreNegocio = nombreNegocio;
@@ -53,6 +54,12 @@ public class Negocio {
     public void imprimirRecibosFotocopias(){
         System.out.println("--------------");
         System.out.println(this.regFotocopias);
+        System.out.println("--------------");
+    }
+
+    public void imprimirReciboMinutos(){
+        System.out.println("--------------");
+        System.out.println(this.regMinutos);
         System.out.println("--------------");
     }
 
