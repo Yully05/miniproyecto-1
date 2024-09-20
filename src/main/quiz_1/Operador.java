@@ -65,8 +65,12 @@ public class Operador {
         this.valorVenta = valorVenta;
     }
 
-    private double ganancia(){
-        return this.valorVenta - (this.operadorSeleccionado.getCosto()*this.cantidadMinutos);
+    public double costos(){
+        return this.operadorSeleccionado.getCosto()*this.cantidadMinutos;
+    }
+    
+    public double ganancia(){
+        return this.valorVenta - costos();
     }
     
 }
