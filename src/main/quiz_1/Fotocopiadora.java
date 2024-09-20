@@ -3,11 +3,11 @@ package main.quiz_1;
 public class Fotocopiadora {
     private double valorVenta;
     private int cantidadCopias;
-    //true -> fotocopia a BN; y false -> fotocopia a color
+    //false -> fotocopia a BN; y true -> fotocopia a color
     private boolean tipoDeCopia;
     private final static Map<Boolean, double[]> PrecioCostoFotocopiaMap = new HashMap<Boolean, double[]>() {{
-            put(true, new double[]{50, 20});
-            put(false, new double[]{500, 350});
+            put(false, new double[]{50, 20});
+            put(true, new double[]{500, 350});
         }};
     private static double ganancia;
     private static double costos;
