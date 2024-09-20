@@ -3,19 +3,23 @@ package main.quiz_1;
 public class Fotocopiadora {
     private double valorVenta;
     private int cantidadCopias;
+    //true -> fotocopia a BN; y false -> fotocopia a color
     private boolean tipoDeCopia;
-    private double costoBlancoNegro;
-    private double costoColor;
+    private final static Map<Boolean, double[]> PrecioCostoFotocopiaMap = new HashMap<Boolean, double[]>() {{
+            put(true, new double[]{50, 20});
+            put(false, new double[]{500, 350});
+        }};
     private static double ganancia;
+    private static double costos;
 
+    public Fotocopiadora(){}
 
-    public Fotocopiadora(int cantidadCopias, boolean tipoDeCopia, double costoBlancoNegro, double costoColor/*, double valorVenta*/){
-       this.cantidadCopias += cantidadCopias;
+    public Fotocopiadora(int cantidadCopias, boolean tipoDeCopia){
+       this.cantidadCopias = cantidadCopias;
        this.tipoDeCopia = tipoDeCopia;
-       this.valorVenta = 0;
-       this.costoBlancoNegro = costoBlancoNegro;
-       this.costoColor = costoColor;
-       //Ganancia();
+       this.valorVenta = this.cantidadCopias * this.PrecioCostoFotocopiaMap.get(this.tipoDeCopia)[0];
+       this.costos += this.cantidadCopias * this.PrecioCostoFotocopiaMap.get(this.tipoDeCopia)[1];
+       this.ganancia += this.valorVenta - this.costos;
     }
 
     public double getValorVenta() {
@@ -42,26 +46,12 @@ public class Fotocopiadora {
         this.tipoDeCopia = tipoDeCopia;
     }
 
-    public static double getGanancia() {
-        return ganancia;
+    private double ganancia(){
+        return this.ganancia;
     }
 
-    private double Ganancia(){
-        double gananciaVenta;
-        if (tipoDeCopia){
-            gananciaVenta = valorVenta - (getCantidadCopias()*costoColor);
-        }else{
-            gananciaVenta = valorVenta - (getCantidadCopias()*costoBlancoNegro);
-        }
-        return gananciaVenta;
-    }
-
-    private double getCostoVenta(boolean tipoDeCopia){
-        if (tipoDeCopia){
-            return getCantidadCopias()*costoColor;
-        }else{
-            return getCantidadCopias()*costoBlancoNegro;
-        }
+    private double costo(){
+        return this.costos;
     }
 
 }
