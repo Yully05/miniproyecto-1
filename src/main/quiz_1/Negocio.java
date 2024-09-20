@@ -9,11 +9,11 @@ public class Negocio {
     private Fotocopiadora fotocopiadora;
     private final ArrayList<Operador> Operadores;
 
-    public Negocio(Fotocopiadora fotocopiadora, double energia, double sueldo) {
+    public Negocio(double energia, double sueldo) {
         this.costoEnergiaDia = energia;
         this.costoEmpleadoDia = sueldo;
-        this.fotocopiadora = fotocopiadora;
-        Operadores = new ArrayList<>();
+        this.fotocopiadora = new Fotocopiadora();
+        this.Operadores = new ArrayList<Operador>();
     }
 
     public double getCostoEnergiaDia() {
@@ -32,40 +32,34 @@ public class Negocio {
         this.costoEmpleadoDia = costoEmpleadoDia;
     }
 
-    public void Registrar(int copiasVenta){
-        fotocopiadora.setCantidadCopias(copiasVenta);
-        fotocopiadora.getValorVenta();
-
-
+    public void registrar(int cantidadcopias, boolean tipoFotocopia){
+        return new Fotocopiadora(cantidadcopias, tipoFotocopia);
     }
 
-    public void Registrar(int cantMinutos, String nombreOperador){
+    public void registrar(int cantMinutos, String nombreOperador){
         Operador newOperador = new Operador(cantMinutos, nombreOperador);
         Operadores.add(newOperador);
     }
 
     public double cantidadDineroDia(){
-        double cantidad = fotocopiadora.getValorVenta();
+        double fotocopiasBruto = fotocopiadora.costo() + fotocopiadora.ganancia();
+        double operadorBruto = 0.0;
         for (Operador operador : Operadores) {
-            cantidad += operador.getValorVenta();
+            operadorBruto += operador.getValorVenta();
         }
-        return cantidad;
+        return operadorBruto + fotocopiasBruto;
     }
 
     public double gananciaObtenida(){
-        double ganancia = Fotocopiadora.getGanancia();
-        for (Operador operador : Operadores) {
-            ganancia += operador.Gananc();
-        }
-        return ganancia;
+        return cantidadDineroDia() - costoDia();
     }
 
     public double costoDia(){
-        double costoMinutos = 0;
+        double costoOperadores = 0.0;
         for (Operador operador : Operadores) {
-            costoMinutos += operador.getCostoMinuto();
+            costoOperadores += operador.costos();
         }
-        return costoEnergiaDia + costoEmpleadoDia + fotocopiadora.getCostoVenta() + costoMinutos;
+        return this.costoEnergiaDia + this.costoEmpleadoDia + fotocopiadora.costo() + costoOperadores;
     }
 
 }
