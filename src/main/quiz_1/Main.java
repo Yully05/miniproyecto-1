@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     
     private static final Scanner inputScanner = new Scanner(System.in);
-    private static final Negocio negocio;
+    private static final Negocio negocio = new Negocio(50000, 30000);;
 
 
     public static void MenuPrincipal(){
@@ -141,10 +141,6 @@ public class Main {
 
     
     public static void main(String[] args) {
-
-        
-        this.negocio = new Negocio(50000, 30000);
         MenuPrincipal();
-
     }
 }
