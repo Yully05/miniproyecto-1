@@ -2,35 +2,55 @@ package main.quiz_1;
 
 public class Operador {
 
-    private String nombre;
-    private double costoMinuto;
+    private Tipo operadorSeleccionado;
     private int cantidadMinutos;
     private double valorVenta;
 
-    public Operador(int cantidadMinutos, String operador) {
-        this.nombre = operador;
+    static public enum Tipo {
+        MOVISTAR("Movistar", 200,100),
+        TIGO("Tigo", 150, 75),
+        UNE("Une", 250, 175),
+        CLARO("Claro", 200, 120);
+
+        private final String nombre;
+        private final double precio;
+        private final double costo;
+
+        TipoProducto(String nombre, double precio, double peso) {
+            this.nombre = nombre;
+            this.precio = precio;
+            this.peso = peso;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public double getPrecio() {
+            return precio;
+        }
+
+        public double getCosto() {
+            return peso;
+        }
+    }
+
+    public Operador(Tipo tipoOperador, int cantidadMinutos) {
+        this.operadorSeleccionado = tipoOperador;
         this.cantidadMinutos = cantidadMinutos;
-        this.valorVenta = 0;
-    }
-
-    public String getNombre(){
-        return nombre;
-    }
-
-    public void setNombre(String nombre){
-        this.nombre = nombre;
-    }
-
-    public double getCostoMinuto(){
-        return costoMinuto;
-    }
-
-    public void setCostoMinuto(double costoMinuto){
-        this.costoMinuto = costoMinuto;
+        this.valorVenta = tipoOperador.getPrecio()*cantidadMinutos;
     }
 
     public int getCantidadMinutos(){
         return cantidadMinutos;
+    }
+
+    public void setOperadorSeleccionados(Tipo operadorSeleccionado){
+        this.operadorSeleccionado = operadorSeleccionado;
+    }
+
+    public Tipo getOperadorSeleccionado(){
+        return this.operadorSeleccionado;
     }
 
     public void setCantidadMinutos(int cantidadMinutos){
@@ -45,10 +65,8 @@ public class Operador {
         this.valorVenta = valorVenta;
     }
 
-    private double Ganancia(){
-        double costoVenta;
-        costoVenta = getCantidadMinutos()*getCostoMinuto();
-        return getValorVenta() - costoVenta;
-
+    private double ganancia(){
+        return this.valorVenta - (this.operadorSeleccionado.getCosto()*this.cantidadMinutos);
     }
+    
 }
